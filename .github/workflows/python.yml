@@ -33,7 +33,7 @@ jobs:
         run: pyenv virtualenv 3.8.5 pytest
 
       - name: pyenv init
-        run: eval $(pyenv init -) && eval $(pyenv virtualenv-init -)
+        run: eval "$(pyenv init -)" && eval "$(pyenv virtualenv-init -)"
 
       - name: pyenv-virtualenv install test
         run: pyenv shell pytest
