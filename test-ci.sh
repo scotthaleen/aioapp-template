@@ -2,6 +2,12 @@
 
 set -ex
 
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+echo "SHELL: ${SHELL}"
+echo "sh $(which sh)"
+
 APP=aio_example
 
 ./cookie-test.py "${APP}"

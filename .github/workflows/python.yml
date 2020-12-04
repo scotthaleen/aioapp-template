@@ -4,7 +4,7 @@ on: [pull_request]
 
 defaults:
   run:
-    shell: bash --rcfile .bashrc -leo pipefail {0}
+    shell: bash -leo pipefail {0}
 
 jobs:
   build:
@@ -15,14 +15,6 @@ jobs:
           - 3.8
 
     steps:
-      - name: run
-        run: |
-            env
-            echo "export ABC=bar" >> .bashrc
-      - name: run
-        run: |
-            env
-
       - uses: actions/checkout@v2
       - name: Setup Python
         uses: actions/setup-python@v1
@@ -43,11 +35,6 @@ jobs:
 
       - name: pyenv-virtualenv test
         run: pyenv virtualenv 3.8.5 pytest
-
-      - name: pyenv init
-        run: |
-          eval "$(pyenv init -)"
-          eval "$(pyenv virtualenv-init -)"
 
       - name: pyenv-virtualenv install test
         run: pyenv local pytest
