@@ -1,0 +1,23 @@
+version: "3"
+services:
+  {{cookiecutter.project_pkg}}:
+    build: {{cookiecutter.project_pkg}}:{{cookiecutter.version}}
+    container_name: {{cookiecutter.project_pkg}}1
+    volumes:
+      - {{cookiecutter.project_pkg}}_resources:/opt/{{cookiecutter.project_pkg}}/resources
+      - {{cookiecutter.project_pkg}}_logs:/var/log/{{cookiecutter.project_pkg}}
+
+
+volumes:
+  {{cookiecutter.project_pkg}}_resources:
+    driver: local
+    driver_opts:
+      type: volume
+      device: ${PWD}/{{cookiecutter.project_pkg}}/resources
+      o: bind
+  {{cookiecutter.project_pkg}}_logs:
+    driver: local
+    driver_opts:
+      type: volume
+      device: ${PWD}/data/logs
+      o: bind

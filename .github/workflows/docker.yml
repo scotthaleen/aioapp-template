@@ -1,0 +1,33 @@
+name: Docker Image CI
+
+on: [pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: [3.8]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install cookiecutter
+        run: pip install --user cookiecutter
+      - name: Generate Server
+        run: ./cookie-ci.py
+      - name: Run docker-compose
+        working-directory: ./ciserver
+        run: docker-compose up -d
+      - name: Check running containers
+        working-directory: ./ciserver
+        run: docker ps -a
+      - name: Run Tests
+        working-directory: ./ciserver
+        run: ./run-tests.sh
+      - name: Shutdown
+        working-directory: ./ciserver
+        run: docker-compose down

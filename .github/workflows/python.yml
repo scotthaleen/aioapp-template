@@ -1,0 +1,30 @@
+name: Python package
+
+on: [pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python:
+          - 3.8
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python }}
+          name: install pyenv
+      - name: setup pyenv
+        uses: "gabrielfalcao/pyenv-action@v5"
+        with:
+          default: "${{ matrix.python }}"
+      - name: Install cookiecutter
+        run: pip install --user cookiecutter
+      - name: pyenv test
+        run: pyenv versions
+
+      #- name: Generate Server
+      #  run: ./test-ci.sh
