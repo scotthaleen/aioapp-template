@@ -18,7 +18,7 @@ jobs:
           python-version: ${{ matrix.python }}
           name: install pyenv
       - name: setup pyenv
-        uses: "gabrielfalcao/pyenv-action@v5"
+        uses: "gabrielfalcao/pyenv-action@master"
         with:
           default: "${{ matrix.python }}"
       - name: Install cookiecutter
