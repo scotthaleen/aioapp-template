@@ -1,6 +1,6 @@
 {
     "github_user": "scotthaleen",
-    "python_version": "3.8",
+    "python_version": "3.8.5",
     "dockerhub_user": "{{ cookiecutter.github_user.lower() }}",
     "project_name": "aio app",
     "project_pkg": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
