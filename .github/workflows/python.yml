@@ -32,7 +32,10 @@ jobs:
       - name: pyenv-virtualenv test
         run: pyenv virtualenv 3.8.5 pytest
 
-      - name: pyenv-virtualenv test
+      - name: pyenv init
+        run: eval (pyenv init -) && eval $(pyenv virtualenv-init -)
+
+      - name: pyenv-virtualenv install test
         run: pyenv shell pytest
 
       - name: Install cookiecutter
