@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
 set -ex
+export SHELL=/bin/bash
 
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
