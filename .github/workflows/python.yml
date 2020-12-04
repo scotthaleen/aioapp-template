@@ -4,7 +4,7 @@ on: [pull_request]
 
 defaults:
   run:
-    shell: bash -leo pipefail {0}
+    shell: bash --rcfile ${{ github.workspace }}/.bashrc -leo pipefail {0}
 
 jobs:
   build:
@@ -15,6 +15,14 @@ jobs:
           - 3.8
 
     steps:
+      - name: run
+        run: |
+            env
+            echo "export ABC=bar" >> .bashrc
+      - name: run
+        run: |
+            env
+
       - uses: actions/checkout@v2
       - name: Setup Python
         uses: actions/setup-python@v1
