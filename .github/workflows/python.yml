@@ -36,7 +36,7 @@ jobs:
         run: eval "$(pyenv init -)" && eval "$(pyenv virtualenv-init -)"
 
       - name: pyenv-virtualenv install test
-        run: pyenv shell pytest
+        run: pyenv local pytest
 
       - name: Install cookiecutter
         run: pip install cookiecutter
