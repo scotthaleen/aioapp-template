@@ -23,8 +23,18 @@ jobs:
           default: "${{ matrix.python }}"
       - name: Install cookiecutter
         run: pip install --user cookiecutter
-      - name: pyenv test
+      - name: pyenv install
+        run: pyenv install 3.8.5
+      - name: pyenv versions
         run: pyenv versions
+
+      - name: pyenv-virtualenv install
+        run: git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
+
+      - name: pyenv-virtualenv test
+        run: pyenv virtualenv 3.8.5 pytest
+
+
 
       #- name: Generate Server
       #  run: ./test-ci.sh
