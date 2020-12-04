@@ -21,8 +21,6 @@ jobs:
         uses: "gabrielfalcao/pyenv-action@master"
         with:
           default: "${{ matrix.python }}"
-      - name: Install cookiecutter
-        run: pip install --user cookiecutter
       - name: pyenv install
         run: pyenv install 3.8.5
       - name: pyenv versions
@@ -34,7 +32,11 @@ jobs:
       - name: pyenv-virtualenv test
         run: pyenv virtualenv 3.8.5 pytest
 
+      - name: pyenv-virtualenv test
+        run: pyenv shell pytest
 
+      - name: Install cookiecutter
+        run: pip install cookiecutter
 
-      #- name: Generate Server
-      #  run: ./test-ci.sh
+      - name: Generate Server
+        run: ./test-ci.sh
