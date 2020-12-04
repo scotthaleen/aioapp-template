@@ -4,7 +4,7 @@ on: [pull_request]
 
 defaults:
   run:
-    shell: bash --rcfile ${{ github.workspace }}/.bashrc -leo pipefail {0}
+    shell: bash --rcfile .bashrc -leo pipefail {0}
 
 jobs:
   build:
