@@ -2,23 +2,6 @@
 
 set -ex
 
-
-echo "$(which python)"
-echo "$(which pyenv)"
-echo "$PYENV_ROOT"
-echo "$PATH"
-
-echo "- -- -"
-
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-echo "$(which python)"
-echo "$(which pyenv)"
-echo "$PYENV_ROOT"
-echo "$PATH"
-
-
 APP=aio_example
 
 ./cookie-test.py "${APP}"
@@ -26,26 +9,8 @@ APP=aio_example
 
 cd "${APP}"
 make venv_build
+make tox
 
 cd "${APP}"
-
-
-echo "$(which python)"
-echo "$(which pyenv)"
-echo "$PYENV_ROOT"
-echo "$PATH"
-
-pyenv which python
-python --version
-
-python -m pip list
-
-ls /opt/hostedtoolcache/pyenv_root/1.2.21/x64/versions/aio_example/bin/
-
-hash -r
-hash
-tox -e devrun
-
-pyenv uninstall -f "${APP}_project"
-pyenv uninstall -f "${APP}"
+python -m tox -e devrun
 

@@ -32,7 +32,7 @@ help:
 
 tox-%:
 	@echo "tox $*"
-	(cd $* && echo "$(which tox)" && tox -e format && tox)
+	(cd $* && python -m tox -e format && python -m tox)
 
 .PHONY: tox
 tox: tox-{{cookiecutter.project_pkg}}
