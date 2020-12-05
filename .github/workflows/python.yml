@@ -12,8 +12,9 @@ jobs:
     defaults:
       run:
         shell: bash
-     env:
-       SHELL: /bin/bash
+
+    env:
+      SHELL: /bin/bash
 
     strategy:
       matrix:

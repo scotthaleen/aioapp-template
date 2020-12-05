@@ -8,7 +8,7 @@ APP=aio_example
 
 cd "${APP}"
 
-make venv_build SHELL=/bin/bash
+make venv_build
 
 cd "${APP}"
 tox -e devrun
