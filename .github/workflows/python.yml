@@ -2,9 +2,9 @@ name: Python package
 
 on: [pull_request]
 
-defaults:
-  run:
-    shell: bash -leo pipefail {0}
+# defaults:
+#   run:
+#     shell: bash -leo pipefail {0}
 
 jobs:
   build:
