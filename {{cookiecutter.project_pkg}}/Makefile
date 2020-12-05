@@ -37,7 +37,6 @@ tox-%:
 .PHONY: tox
 tox: tox-{{cookiecutter.project_pkg}}
 
-
 docker_build-%:
 	@echo "docker build $*"
 	(cd $* && ./build-docker.sh)

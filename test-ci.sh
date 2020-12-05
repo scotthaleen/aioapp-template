@@ -4,7 +4,6 @@ set -ex
 
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
-echo "sh $(which sh)"
 
 APP=aio_example
 
@@ -12,13 +11,13 @@ APP=aio_example
 
 cd "${APP}"
 
-make venv_build
+make venv_build SHELL=/bin/bash
 
 ls -lah .
 ls -lah "${APP}"/
 
 cat "${APP}"/.python-version
-make tox
+make tox SHELL=/bin/bash
 
 cd "${APP}"
 tox -e devrun
