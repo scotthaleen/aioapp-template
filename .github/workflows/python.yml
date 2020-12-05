@@ -9,6 +9,12 @@ on: [pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+     env:
+       SHELL: /bin/bash
+
     strategy:
       matrix:
         python:
@@ -42,5 +48,5 @@ jobs:
       - name: Install cookiecutter
         run: pip install cookiecutter
 
-      - name: Generate Server
+      - name: Run Test
         run: ./test-ci.sh

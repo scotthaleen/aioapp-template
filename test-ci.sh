@@ -1,9 +1,6 @@
-#!/usr/bin/env sh
+#!/bin/bash
 
 set -ex
-
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 
 APP=aio_example
 
