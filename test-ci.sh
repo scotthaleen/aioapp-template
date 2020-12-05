@@ -1,11 +1,10 @@
 #!/bin/bash
 
-set -ex
+set -e
 
 APP=aio_example
 
 ./cookie-test.py "${APP}"
-
 
 cd "${APP}"
 make venv_build
