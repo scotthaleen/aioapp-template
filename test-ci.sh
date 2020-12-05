@@ -24,7 +24,6 @@ APP=aio_example
 ./cookie-test.py "${APP}"
 
 
-
 cd "${APP}"
 make venv_build
 
@@ -36,6 +35,7 @@ echo "$(which pyenv)"
 echo "$PYENV_ROOT"
 echo "$PATH"
 
+pyenv which python
 python --version
 
 tox -e devrun
