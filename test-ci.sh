@@ -40,6 +40,10 @@ python --version
 
 python -m pip list
 
+ls /opt/hostedtoolcache/pyenv_root/1.2.21/x64/versions/aio_example/bin/
+
+hash -r
+hash
 tox -e devrun
 
 pyenv uninstall -f "${APP}_project"
