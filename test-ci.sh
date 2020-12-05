@@ -13,12 +13,6 @@ cd "${APP}"
 
 make venv_build SHELL=/bin/bash
 
-ls -lah .
-ls -lah "${APP}"/
-
-cat "${APP}"/.python-version
-make tox SHELL=/bin/bash
-
 cd "${APP}"
 tox -e devrun
 
