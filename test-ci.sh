@@ -38,6 +38,8 @@ echo "$PATH"
 pyenv which python
 python --version
 
+python -m pip list
+
 tox -e devrun
 
 pyenv uninstall -f "${APP}_project"
