@@ -1,0 +1,53 @@
+name: Python package
+
+on: [pull_request]
+
+# defaults:
+#   run:
+#     shell: bash -leo pipefail {0}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+
+    env:
+      SHELL: /bin/bash
+
+    strategy:
+      matrix:
+        python:
+          - 3.8
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python }}
+          name: install pyenv
+      - name: setup pyenv
+        uses: "gabrielfalcao/pyenv-action@master"
+        with:
+          default: "${{ matrix.python }}"
+      - name: pyenv install
+        run: pyenv install 3.8.5
+      - name: pyenv versions
+        run: pyenv versions
+
+      - name: pyenv-virtualenv install
+        run: git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
+
+      - name: pyenv-virtualenv test
+        run: pyenv virtualenv 3.8.5 pytest
+
+      - name: pyenv-virtualenv install test
+        run: pyenv local pytest
+
+      - name: Install cookiecutter
+        run: pip install cookiecutter
+
+      - name: Run Test
+        run: ./test-ci.sh
